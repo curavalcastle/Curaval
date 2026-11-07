@@ -1,0 +1,6 @@
+/* The nav pill is intentionally disabled; it was visually reading as an empty circle. */
+.nav-pill{display:none!important}
+
+/* Reveal runs every time an element re-enters the viewport. */
+.app-view .reveal{opacity:0;transform:translateY(20px);transition:opacity .52s ease-out,transform .52s ease-out}.app-view .reveal.reveal-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.app-view .reveal{opacity:1;transform:none;transition:none}}
