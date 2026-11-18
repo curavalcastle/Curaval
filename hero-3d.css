@@ -1,4 +1,53 @@
-/* Video-free 3D hero composition */
+/* Calm architectural hero composition */
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: none !important;
+  filter: contrast(1.05) saturate(1.07);
+  z-index: 1 !important;
+  opacity: 1 !important;
+  display: block !important;
+  pointer-events: none;
+}
+
+.hero-container,
+.hero-content {
+  position: relative;
+  z-index: 3 !important;
+  background: transparent !important;
+}
+
+.hero.section,
+body.dark .hero.section {
+  background: #DCE7EC !important;
+}
+
+.hero .hero-stats,
+body.dark .hero .hero-stats {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 12px 32px rgba(14, 36, 46, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.85), inset 0 -1px 1px rgba(0, 101, 112, 0.12) !important;
+  border-radius: 20px !important;
+  padding: 18px 24px !important;
+}
+
+.hero .hero-stats .stat strong,
+body.dark .hero .hero-stats .stat strong {
+  color: #005A64 !important;
+}
+
+.hero .hero-stats .stat span,
+body.dark .hero .hero-stats .stat span {
+  color: #16323D !important;
+  font-weight: 600 !important;
+}
+
 .hero{background:radial-gradient(circle at 81% 43%,#286a71 0,#193a4a 25%,#152b3b 55%,#111e2e 100%);perspective:1100px}.hero-overlay{z-index:-2;background:linear-gradient(90deg,#112535f4 0%,#132c3bdc 44%,#17374572 100%)}.hero-scene{position:absolute;inset:0 0 0 42%;overflow:hidden;pointer-events:none;z-index:-1;transform-style:preserve-3d}.scene-floor{position:absolute;width:700px;height:420px;inset-inline-end:-40px;bottom:-250px;background:linear-gradient(135deg,#4ed0c554,#a4fff51c);border:1px solid #7ae6dd40;transform:rotateX(68deg) rotateZ(22deg);box-shadow:0 0 90px #50ccbc36}.scene-ring{position:absolute;border:1px solid #a2fffa59;border-radius:50%;transform-style:preserve-3d}.ring-one{width:510px;height:510px;top:90px;inset-inline-end:7%;transform:rotateX(69deg) rotateZ(-20deg);animation:orbit 16s linear infinite}.ring-two{width:305px;height:305px;top:190px;inset-inline-end:19%;border-style:dashed;transform:rotateX(70deg) rotateZ(45deg);animation:orbit 11s linear infinite reverse}.scene-cube{position:absolute;width:130px;height:130px;transform-style:preserve-3d;animation:float3d 7s ease-in-out infinite}.scene-cube span{position:absolute;inset:0;border:1px solid #85f2e57d;background:linear-gradient(135deg,#5dd5cc6b,#306d7854);backdrop-filter:blur(4px)}.scene-cube span:nth-child(1){transform:translateZ(65px)}.scene-cube span:nth-child(2){transform:rotateY(90deg) translateZ(65px)}.scene-cube span:nth-child(3){transform:rotateX(90deg) translateZ(65px)}.cube-one{top:190px;inset-inline-end:25%;transform:rotateX(-15deg) rotateY(31deg);filter:drop-shadow(0 22px 28px #001b2e80)}.cube-two{width:74px;height:74px;top:120px;inset-inline-end:9%;transform:rotateX(24deg) rotateY(-25deg);animation-delay:-3s}.cube-two span:nth-child(1){transform:translateZ(37px)}.cube-two span:nth-child(2){transform:rotateY(90deg) translateZ(37px)}.cube-two span:nth-child(3){transform:rotateX(90deg) translateZ(37px)}.scene-particle{position:absolute;width:10px;height:10px;border-radius:50%;background:#a3fff6;box-shadow:0 0 18px 5px #50ccbc80;animation:twinkle 3s ease-in-out infinite}.particle-one{top:24%;inset-inline-end:43%}.particle-two{top:64%;inset-inline-end:12%;animation-delay:-1s}.particle-three{top:17%;inset-inline-end:59%;animation-delay:-2s}.scene-cross{position:absolute;top:46%;inset-inline-end:9%;font:700 105px/1 Inter;color:#78e8dc2e;text-shadow:0 0 24px #50ccbc3d;transform:rotateY(-20deg)}@keyframes orbit{to{transform:rotateX(69deg) rotateZ(340deg)}}@keyframes float3d{50%{translate:0 -25px;rotate:y 24deg}}@keyframes twinkle{50%{scale:1.8;opacity:.45}}.logo img{mix-blend-mode:normal}.dark .logo img{filter:brightness(0) invert(1);mix-blend-mode:normal}.footer-grid>div:first-child{position:relative}.footer-logo{visibility:hidden}.footer-grid>div:first-child:before{content:"";display:block;width:155px;height:64px;background:url("logo-transparent.png") center/contain no-repeat}@media(max-width:760px){.hero-scene{opacity:.5;inset-inline-start:20%}}
 
 /* Strong editorial hierarchy and visual variety */

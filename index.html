@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#50CCBC" />
   <meta name="description" content="Curaval Castle — pharmaceutical distribution and logistics across Egypt." />
-  <meta property="og:title" content="Curaval Castle | كيورافال كاسل" />
+  <meta property="og:title" content="Curaval Castle | كيورافال كاسيل" />
   <meta property="og:image" content="logo-full.png" />
-  <title>Curaval Castle | كيورافال كاسل</title>
+  <title>Curaval Castle | كيورافال كاسيل</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&family=Zain:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="spa-views.css" />
   <link rel="stylesheet" href="interactions.css" />
   <link rel="stylesheet" href="reveal-fix.css" />
+  <link rel="stylesheet" href="studio-backdrop.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -25,24 +26,23 @@
   <div class="scroll-progress" aria-hidden="true"><span></span></div>
   <header class="site-header" id="home">
     <nav class="nav container" aria-label="Primary navigation">
-      <a class="logo" href="#home"><img src="logo-transparent.png" alt="Curaval Castle" /></a>
+      <a class="logo" href="#home"><img src="Logos/logo-footer-white.png" alt="Curaval Castle" /><span class="brand-tagline" data-nav="tagline"></span></a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-navigation"><i data-lucide="menu"></i></button>
       <div class="nav-links" id="primary-navigation"><span class="nav-pill" aria-hidden="true"></span>
-        <a href="#home" class="view-link active" data-view="home">الرئيسية</a><a href="#branches" class="view-link" data-view="branches">فروعنا</a><a href="#join-us" class="view-link" data-view="join">انضم إلينا</a><a href="#contact" class="view-link" data-view="contact">تواصل معنا</a>
+        <a href="#home" class="view-link active" data-view="home" data-nav="home">الرئيسية</a><a href="#about" class="view-link" data-nav="about">من نحن</a><a href="#branches" class="view-link" data-view="branches" data-nav="branches">فروعنا</a><a href="#contact" class="view-link" data-view="contact" data-nav="contact">تواصل معنا</a><a href="#join-us" class="view-link" data-view="join" data-nav="joinUs">انضم إلينا</a><a href="#services" class="view-link" data-nav="services">الخدمات المقدمة</a><a href="#media" class="view-link" data-nav="media">إعلامنا</a>
       </div>
       <div class="nav-actions"><button class="language-switch" type="button">EN</button><button class="theme-switch" type="button" aria-label="Toggle theme"><i data-lucide="moon"></i></button><a class="button nav-cta" href="#join-us" data-nav="joinUs"></a></div>
     </nav>
   </header>
   <div class="menu-backdrop" id="menu-backdrop" aria-hidden="true"></div>
 
-  <div class="ambient-orbs" aria-hidden="true"><span class="ambient-orb orb-a"></span><span class="ambient-orb orb-b"></span><span class="ambient-orb orb-c"></span></div>
   <main>
     <section class="hero section">
-      <div class="hero-overlay"></div><div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
-      <div class="hero-scene" aria-hidden="true"><div class="scene-ring ring-one"></div><div class="scene-ring ring-two"></div><div class="scene-floor"></div><div class="scene-cube cube-one"><span></span><span></span><span></span></div><div class="scene-cube cube-two"><span></span><span></span><span></span></div><div class="scene-particle particle-one"></div><div class="scene-particle particle-two"></div><div class="scene-particle particle-three"></div><div class="scene-cross">+</div></div>
-      <div class="container hero-content">
-        <p class="eyebrow light"><i data-lucide="sparkles"></i><span data-hero="badge"></span></p>
-        <h1 data-hero="title"></h1><p class="hero-description" data-hero="description"></p>
+      <video class="hero-bg-video" src="Logos/hero-bg.mp4" autoplay loop muted playsinline preload="auto"></video>
+      <div class="container hero-content hero-container">
+        <h1 class="hero-brand" data-hero="brand"></h1>
+        <p class="hero-subtitle" data-hero="title"></p>
+        <p class="hero-description" data-hero="description"></p>
         <div class="hero-actions"><a class="button" href="#join-us" data-hero="ctaPrimary"></a><a class="button button-outline" href="#services" data-hero="ctaSecondary"></a></div>
         <div class="hero-stats" id="stats"></div>
       </div>
@@ -58,7 +58,7 @@
 
     <section class="section" id="network"><div class="container network-layout"><div class="network-copy reveal"><p class="eyebrow"><i data-lucide="map-pinned"></i><span class="network-label"></span></p><h2 class="network-title"></h2><p class="network-body"></p><div class="coverage-points"><span><i data-lucide="circle-check"></i> 27 Governorates</span><span><i data-lucide="circle-check"></i> +15,000 Facilities</span><span><i data-lucide="circle-check"></i> 24/7 Operations</span></div></div><div class="map-card reveal tilt-card"><div class="map-grid"></div><div class="map-route route-a"></div><div class="map-route route-b"></div><div class="map-route route-c"></div><div class="map-pin pin-a"></div><div class="map-pin pin-b"></div><div class="map-pin pin-c"></div><div class="map-center"><i data-lucide="cross"></i></div><p>EGYPT · NATIONWIDE REACH</p></div></div></section>
 
-    <section class="section fleet-section" id="fleet"><div class="container fleet-layout"><div class="fleet-preview reveal tilt-card"><video autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture><source src="Videos/صناعة%20الدواء.mp4" type="video/mp4" /></video><div class="preview-caption"><i data-lucide="thermometer-snowflake"></i><span>2°C — 8°C</span></div></div><div class="fleet-copy reveal"><p class="eyebrow"><i data-lucide="truck"></i><span class="fleet-label"></span></p><h2 class="fleet-title"></h2><p class="fleet-body"></p><div class="fleet-numbers"><div><strong>500+</strong><span>Vehicles</span></div><div><strong>GPS</strong><span>Live Tracking</span></div><div><strong>GSPD</strong><span>Compliant</span></div></div></div></div></section>
+    <section class="section fleet-section" id="media"><div class="container fleet-layout"><div class="fleet-preview reveal tilt-card"><video autoplay loop muted playsinline webkit-playsinline preload="auto" disablePictureInPicture><source src="Videos/صناعة%20الدواء.mp4" type="video/mp4" /></video><div class="preview-caption"><i data-lucide="thermometer-snowflake"></i><span>2°C — 8°C</span></div></div><div class="fleet-copy reveal"><p class="eyebrow"><i data-lucide="truck"></i><span class="fleet-label"></span></p><h2 class="fleet-title"></h2><p class="fleet-body"></p><div class="fleet-numbers"><div><strong>500+</strong><span>Vehicles</span></div><div><strong>GPS</strong><span>Live Tracking</span></div><div><strong>GSPD</strong><span>Compliant</span></div></div></div></div></section>
 
     <section class="section join-section" id="join"><div class="container join-layout"><div class="join-copy reveal"><p class="eyebrow"><i data-lucide="badge-check"></i><span data-form="sectionBadge"></span></p><h2 data-form="title"></h2><p class="lead" data-form="subtitle"></p><div class="join-seal"><i data-lucide="shield-check"></i><span>GSPD Compliant · Secure Partner Onboarding</span></div><a class="button join-page-cta" href="#join-us"><span data-join-page>اختر طريقة انضمامك</span><i data-lucide="arrow-left"></i></a></div>
       <form class="partner-form reveal" id="partner-form" novalidate>

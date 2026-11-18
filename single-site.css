@@ -95,13 +95,16 @@ video::-webkit-media-controls-start-playback-button{display:none!important;-webk
 @media(max-width:600px){.branch-detail-card{width:92%;padding:2rem 1.1rem!important;margin:20px auto!important}.branch-emblem{width:112px;height:112px;border-radius:32px}.branch-emblem img{width:78px!important;height:78px!important}.branch-name{font-size:1.45rem!important}.branch-governorate{font-size:1.1rem}.branch-info-item{gap:11px;padding:13px;min-height:78px}.branch-info-icon{width:46px;height:46px}.branch-info-copy>span{font-size:.82rem}}
 .join-section .join-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2rem,5vw,5rem)}
 .home-join-options{min-width:0}
-.home-join-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+.home-join-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:stretch}
 .home-join-card{min-height:112px;border:1px solid var(--line);border-radius:18px;background:var(--card);color:var(--ink);padding:16px;font:700 .95rem/1.6 Cairo,Inter,sans-serif;cursor:pointer;transition:transform .26s cubic-bezier(.22,1,.36,1),box-shadow .26s,border-color .26s}
-.home-join-card:first-child{grid-column:1/-1;width:min(78%,360px);justify-self:center}
+.home-join-card:first-child{grid-column:1 / -1;width:50%;justify-self:center}
 .home-join-card:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 12px 26px #50ccbc25}
 .home-join-card svg{display:block;width:28px;height:28px;margin:0 auto 8px;color:var(--deep)}
 .embedded-form,.form-panel{scroll-margin-top:90px}
 .footer-logo{width:155px;height:auto;padding:0;background:transparent!important;border-radius:0;filter:none!important;mix-blend-mode:normal!important}
+.footer-grid>div:nth-child(2){display:flex;flex-direction:column;align-items:center;text-align:center}
+.footer-grid>div:nth-child(2) h3{margin-bottom:.35rem}
+.footer-grid>div:nth-child(2) a{justify-content:center;margin:.35rem 0}
 @media(max-width:768px){
   .join-section .join-layout{grid-template-columns:minmax(0,1fr);gap:1.5rem}
   .home-join-cards{grid-template-columns:minmax(0,1fr);gap:10px}

@@ -74,7 +74,7 @@ document.querySelectorAll('.web3-form').forEach(form=>form.addEventListener('sub
     if(!result.success)throw new Error(result.message);
     form.reset();
     status.classList.add('success');
-    status.textContent='تم إرسال طلبك بنجاح. شكرًا لانضمامك إلى كيورافال كاسل.';
+    status.textContent='تم إرسال طلبك بنجاح. شكرًا لانضمامك إلى كيورافال كاسيل.';
   }catch(error){
     status.classList.add('error');
     status.textContent='تعذّر إرسال الطلب حاليًا. تأكد من تعيين مفتاح Web3Forms الصحيح ثم حاول مرة أخرى.';

@@ -103,7 +103,7 @@
         <div class="branch-emblem"><img src="${fullLogo}" alt="Curaval Castle"></div>
         <h2 class="branch-name" id="branch-title">${title}</h2>
         <p class="branch-governorate">${language === 'en' ? 'Coming Soon' : 'قريباً / Coming Soon'}</p>
-        <p class="branch-future">${language === 'en' ? 'Look forward to the next Curaval Castle branch.' : 'ترقب الفرع القادم من كيورافال كاسل.'}</p>
+        <p class="branch-future">${language === 'en' ? 'Look forward to the next Curaval Castle branch.' : 'ترقب الفرع القادم من كيورافال كاسيل.'}</p>
       </div>`;
     }
 
