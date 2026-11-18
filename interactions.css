@@ -1,2 +1,47 @@
 /* High-end interaction layer: GPU-friendly transforms and paint-only glows. */
 .ambient-orbs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.ambient-orb{position:absolute;width:310px;height:310px;border-radius:50%;filter:blur(80px);opacity:.15;will-change:transform;animation:ambientDrift 19s ease-in-out infinite alternate}.orb-a{background:#50ccbc;top:15%;inset-inline-start:-120px}.orb-b{background:#57b9ed;bottom:4%;inset-inline-end:-90px;animation-delay:-8s}.orb-c{background:#8ee4bd;width:230px;height:230px;top:48%;inset-inline-start:48%;animation-delay:-13s}@keyframes ambientDrift{0%{transform:translate3d(-18px,-12px,0) scale(.93)}50%{transform:translate3d(45px,32px,0) scale(1.08)}100%{transform:translate3d(-4px,60px,0) scale(.96)}}.nav-links{position:relative}.nav-pill{display:block;position:absolute;z-index:-1;top:2px;height:37px;border-radius:999px;background:#50ccbc1c;border:1px solid #50ccbc37;backdrop-filter:blur(8px);will-change:transform,width;transition:transform .45s cubic-bezier(.4,0,.2,1),width .45s cubic-bezier(.4,0,.2,1),opacity .2s;opacity:0}.nav-pill.ready{opacity:1}.service-card,.branch-card{position:relative;transform-style:preserve-3d;will-change:transform}.service-card:after,.branch-card:after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(250px circle at var(--mouse-x,50%) var(--mouse-y,50%),#86fff84d,transparent 42%);opacity:0;transition:opacity .3s}.service-card:hover:after,.branch-card:hover:after{opacity:1}.tilt-spotlight{transition:transform .5s ease-out!important}.tilt-spotlight:hover{z-index:2}@media(pointer:coarse),(hover:none){.tilt-spotlight{transform:none!important}.service-card:after,.branch-card:after{display:none}}@media(prefers-reduced-motion:reduce){.ambient-orb{animation:none}.nav-pill{transition:none}.tilt-spotlight{transition:none!important}}
+
+@keyframes branchBackdropIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(8px)}}
+@keyframes branchDialogSpring{0%{opacity:0;transform:translateY(22px) scale(.91)}68%{opacity:1;transform:translateY(-3px) scale(1.015)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes curavalLogoReveal{0%{opacity:0;transform:perspective(700px) rotateY(-46deg) rotateX(18deg) scale(.48)}68%{opacity:1;transform:perspective(700px) rotateY(9deg) rotateX(-3deg) scale(1.09)}100%{opacity:1;transform:perspective(700px) rotateY(0) rotateX(0) scale(1)}}
+@keyframes branchRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes branchCardLand{0%{opacity:0;transform:perspective(900px) translateY(24px) rotateX(9deg) scale(.96)}72%{opacity:1;transform:perspective(900px) translateY(-2px) rotateX(-1deg) scale(1.01)}100%{opacity:1;transform:perspective(900px) translateY(0) rotateX(0) scale(1)}}
+@keyframes themeFlashSweep{0%{opacity:0;transform:translateX(-72%) rotate(-8deg)}18%{opacity:.9}100%{opacity:0;transform:translateX(72%) rotate(-8deg)}}
+@keyframes branchIconFloat{from{transform:translateY(0) rotateZ(-3deg)}to{transform:translateY(-3px) rotateZ(3deg)}}
+.branch-modal{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.branch-modal.open{animation:branchBackdropIn .34s ease both}
+.branch-dialog{max-width:640px!important;width:92%!important;padding:2.5rem 2rem!important;border-radius:24px!important;animation:branchDialogSpring .62s cubic-bezier(.22,1,.36,1) both}
+.branch-modal.open .branch-emblem,.branch-detail-card .branch-emblem{animation:curavalLogoReveal .8s cubic-bezier(.22,1,.36,1) .12s both}
+.branch-modal.open .branch-name,.branch-detail-card .branch-name{animation:branchRise .55s cubic-bezier(.22,1,.36,1) .24s both}
+.branch-modal.open .branch-governorate,.branch-detail-card .branch-governorate{animation:branchRise .55s cubic-bezier(.22,1,.36,1) .3s both}
+.branch-modal.open .branch-info-item:nth-child(1),.branch-detail-card .branch-info-item:nth-child(1){--flash-delay:.36s;animation:branchCardLand .62s cubic-bezier(.22,1,.36,1) .36s both}
+.branch-modal.open .branch-info-item:nth-child(2),.branch-detail-card .branch-info-item:nth-child(2){--flash-delay:.48s;animation:branchCardLand .62s cubic-bezier(.22,1,.36,1) .48s both}
+.branch-modal.open .branch-info-item:before,.branch-detail-card .branch-info-item:before{animation:themeFlashSweep .9s ease var(--flash-delay) both}
+.branch-modal-open{overflow:hidden}
+@media(max-width:600px){.branch-dialog{padding:2rem 1.1rem!important;max-height:calc(100dvh - 2rem);overflow-y:auto}}
+@media(prefers-reduced-motion:reduce){.branch-modal,.branch-dialog,.branch-modal.open .branch-emblem,.branch-modal.open .branch-name,.branch-modal.open .branch-governorate,.branch-modal.open .branch-info-item,.branch-modal.open .branch-info-item:before,.branch-detail-card .branch-emblem,.branch-detail-card .branch-name,.branch-detail-card .branch-governorate,.branch-detail-card .branch-info-item,.branch-detail-card .branch-info-item:before{animation:none!important;transition:none!important}.branch-info-item{transform:none!important}.branch-info-item:hover .branch-info-icon{animation:none!important}}
+
+@keyframes mobileMenuItemIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes menuIconReveal{from{opacity:.35;transform:rotate(-70deg) scale(.8)}to{opacity:1;transform:rotate(0) scale(1)}}
+.menu-backdrop{display:none}
+.service-icon-3d{display:block;width:60px;height:60px;overflow:visible;transform-style:preserve-3d;transition:transform .32s cubic-bezier(.22,1,.36,1),filter .32s}
+.service-card:hover .service-icon-3d{transform:perspective(500px) translateY(-4px) rotateY(9deg) rotateZ(-4deg);filter:drop-shadow(0 7px 5px #168d9140)}
+@media(max-width:760px){
+  .menu-backdrop{display:block;position:fixed;z-index:49;inset:68px 0 0;background:#101d29a6;backdrop-filter:blur(4px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .26s cubic-bezier(.22,1,.36,1),visibility 0s linear .26s}
+  .menu-backdrop.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .26s cubic-bezier(.22,1,.36,1)}
+  .site-header .menu-toggle{position:relative;z-index:56;transition:background .26s,transform .26s cubic-bezier(.22,1,.36,1)}
+  .site-header .menu-toggle svg{transition:transform .26s cubic-bezier(.22,1,.36,1)}
+  .site-header .menu-toggle.is-open svg{animation:menuIconReveal .26s cubic-bezier(.22,1,.36,1) both}
+  .site-header .nav-links{position:absolute;z-index:55;top:68px;inset-inline:0;display:grid;gap:4px;padding:12px 20px 20px;background:var(--bg);border-bottom:1px solid var(--line);border-radius:0 0 18px 18px;box-shadow:var(--shadow);opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-9px) scale(.99);transform-origin:top center;transition:opacity .26s cubic-bezier(.22,1,.36,1),transform .26s cubic-bezier(.22,1,.36,1),visibility 0s linear .26s}
+  .site-header .nav-links.open{display:grid;opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);transition:opacity .26s cubic-bezier(.22,1,.36,1),transform .26s cubic-bezier(.22,1,.36,1)}
+  .site-header .nav-links .nav-pill{display:none}
+  .site-header .nav-links .view-link{opacity:0;transform:translateY(-7px);transition:opacity .2s ease,transform .2s ease}
+  .site-header .nav-links.open .view-link{opacity:1;transform:translateY(0);animation:mobileMenuItemIn .26s cubic-bezier(.22,1,.36,1) both}
+  .site-header .nav-links.open .view-link:nth-of-type(2){animation-delay:35ms}
+  .site-header .nav-links.open .view-link:nth-of-type(3){animation-delay:70ms}
+  .site-header .nav-links.open .view-link:nth-of-type(4){animation-delay:105ms}
+  .site-header .nav-links.open .view-link:nth-of-type(5){animation-delay:140ms}
+  .site-header .nav-links a{padding:9px 0}
+}
+@media(hover:none),(pointer:coarse){.service-card:hover .service-icon-3d{transform:none;filter:none}}
+@media(prefers-reduced-motion:reduce){.service-icon-3d,.service-card:hover .service-icon-3d{transition:none;transform:none;filter:none}.menu-backdrop,.site-header .nav-links,.site-header .nav-links .view-link,.site-header .menu-toggle svg{animation:none!important;transition:none!important}}

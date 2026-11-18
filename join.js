@@ -1,5 +1,6 @@
 const tabs=document.querySelectorAll('.choice-tab'),forms=document.querySelectorAll('.form-panel');
-tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===tab));forms.forEach(form=>form.classList.toggle('active',form.id===tab.dataset.tab));document.querySelector(`#${tab.dataset.tab}`).scrollIntoView({behavior:'smooth',block:'nearest'})}));
+function scrollToFormStart(form){const margin=parseFloat(getComputedStyle(form).scrollMarginTop)||90;form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});setTimeout(()=>{if(form.isConnected&&form.classList.contains('active')&&Math.abs(form.getBoundingClientRect().top-margin)>24)window.scrollTo({top:Math.max(0,window.scrollY+form.getBoundingClientRect().top-margin),behavior:'instant'})},650)}
+tabs.forEach(tab=>tab.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===tab));forms.forEach(form=>form.classList.toggle('active',form.id===tab.dataset.tab));scrollToFormStart(document.querySelector(`#${tab.dataset.tab}`))}));
 document.querySelectorAll('.web3-form').forEach(form=>form.addEventListener('submit',async event=>{
   event.preventDefault();
   const status=form.querySelector('.form-status'),button=form.querySelector('button[type="submit"]');

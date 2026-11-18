@@ -130,3 +130,34 @@ button.disabled=false;
 };
 }
 })();
+
+(()=>{
+const header=document.querySelector('.portal-topbar');
+if(!header)return;
+const isArabic=document.documentElement.lang==='ar',labels=isArabic?{home:'الرئيسية',branches:'فروعنا',join:'انضم إلينا',contact:'تواصل معنا'}:{home:'Home',branches:'Our Branches',join:'Join Us',contact:'Contact Us'};
+const tools=header.querySelector('.portal-tools'),menu=document.createElement('nav'),toggle=document.createElement('button'),backdrop=document.createElement('div');
+menu.className='portal-menu';menu.id='portal-menu';menu.setAttribute('aria-label',isArabic?'القائمة الرئيسية':'Primary navigation');menu.setAttribute('aria-hidden','true');
+menu.innerHTML=`<a href="index.html">${labels.home}</a><a href="branches.html">${labels.branches}</a><a href="join.html">${labels.join}</a><a href="index.html#contact">${labels.contact}</a>`;
+toggle.className='portal-menu-toggle';toggle.type='button';toggle.setAttribute('aria-label',isArabic?'فتح القائمة':'Open menu');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','portal-menu');toggle.innerHTML='<i data-lucide="menu"></i>';
+backdrop.className='portal-menu-backdrop';backdrop.setAttribute('aria-hidden','true');
+if(tools){header.insertBefore(menu,tools);header.insertBefore(toggle,tools)}else{header.append(menu,toggle)}
+header.insertAdjacentElement('afterend',backdrop);
+const setOpen=open=>{menu.classList.toggle('open',open);toggle.classList.toggle('is-open',open);backdrop.classList.toggle('open',open);menu.setAttribute('aria-hidden',String(!open));backdrop.setAttribute('aria-hidden',String(!open));toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',isArabic?(open?'إغلاق القائمة':'فتح القائمة'):(open?'Close menu':'Open menu'));toggle.innerHTML=`<i data-lucide="${open?'x':'menu'}"></i>`;lucide.createIcons()};
+toggle.addEventListener('click',event=>{event.stopPropagation();setOpen(!menu.classList.contains('open'))});
+menu.addEventListener('click',event=>{if(event.target.closest('a,button'))setOpen(false)});
+backdrop.addEventListener('click',()=>setOpen(false));
+document.addEventListener('click',event=>{if(menu.classList.contains('open')&&!menu.contains(event.target)&&!toggle.contains(event.target))setOpen(false)});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.classList.contains('open'))setOpen(false)});
+document.querySelector('.portal-tools')?.addEventListener('click',()=>{if(menu.classList.contains('open'))setOpen(false)});
+const footerLogo=document.querySelector('footer .footer-logo');
+if(footerLogo)footerLogo.src='Logos/logo-footer-white.png';
+function scrollToActivePortalForm(){
+  const form=document.querySelector('.form-panel.active');
+  if(!form)return;
+  const margin=parseFloat(getComputedStyle(form).scrollMarginTop)||90;
+  form.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  window.setTimeout(()=>{if(form.isConnected&&form.classList.contains('active')&&Math.abs(form.getBoundingClientRect().top-margin)>24)window.scrollTo({top:Math.max(0,window.scrollY+form.getBoundingClientRect().top-margin),behavior:'instant'})},650);
+}
+if(document.body.dataset.page==='join')document.querySelector('.choice-tabs')?.addEventListener('click',event=>{if(!event.target.closest('.choice-tab'))return;window.setTimeout(scrollToActivePortalForm,0)});
+lucide.createIcons();
+})();

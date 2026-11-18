@@ -13,7 +13,7 @@ body.dark[data-page="join"] .join-shell .form-panel .field input,body.dark[data-
 body.dark[data-page="join"] .join-shell .form-panel .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23a9b8bf' stroke-width='1.5'/%3E%3C/svg%3E");color-scheme:dark}
 body.dark[data-page="join"] .join-shell .form-panel .field select option{background-color:#182632;color:var(--ink)}
 @media(max-width:768px){
-  html,body,#portal-root{max-width:100%;overflow-x:hidden}
+  html,body,#portal-root{max-width:100%;overflow-x:clip}
   .container{width:min(calc(100% - 2rem),1180px)}
   .portal-topbar,.portal-topbar+.hero-mini,.page-section,.join-shell{padding-inline:1rem!important}
   .portal-topbar{height:64px!important;gap:.5rem}
@@ -34,6 +34,43 @@ body.dark[data-page="join"] .join-shell .form-panel .field select option{backgro
   .form-grid{grid-template-columns:minmax(0,1fr);gap:.875rem}
   .field input,.field textarea,.field select{max-width:100%;font-size:16px!important}
 }
+.portal-topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:1.25rem}
+.portal-menu{display:flex;align-items:center;justify-content:center;gap:clamp(.65rem,2vw,1.5rem);flex:1}
+.portal-menu a{color:var(--ink);font-size:.84rem;font-weight:700;text-decoration:none;transition:color .2s}
+.portal-menu a:hover{color:var(--deep)}
+.portal-menu-toggle{display:none;border:0;border-radius:50%;width:40px;height:40px;place-items:center;background:transparent;color:var(--ink);cursor:pointer}
+.portal-menu-toggle svg{width:21px;height:21px}
+.portal-menu-backdrop{display:none}
+.footer-logo{width:155px;height:auto;padding:0;object-fit:contain;filter:none!important;mix-blend-mode:normal!important}
+body[data-page="join"] .join-shell{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:1.5rem 4rem}
+body[data-page="join"] .join-heading{grid-column:1;text-align:start;max-width:none;margin:0}
+body[data-page="join"] .join-heading .eyebrow{justify-content:flex-start}
+body[data-page="join"] .choice-tabs{grid-column:2;grid-row:1;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:none;margin:0}
+@media(min-width:769px){body[data-page="join"] .choice-tab:first-child{grid-column:1/-1;width:min(80%,420px);justify-self:center}}
+body[data-page="join"] .form-panel{grid-column:1/-1;width:min(100%,930px);justify-self:center}
+body[data-page="join"] .form-panel{scroll-margin-top:90px}
+@media(max-width:768px){
+  .portal-topbar{z-index:50;gap:.45rem}
+  .portal-menu-toggle{display:grid;order:3;flex:none}
+  .portal-tools{order:4}
+  .portal-menu{position:fixed;z-index:52;top:64px;inset-inline:0;display:grid;gap:0;padding:10px 20px 18px;background:var(--card,#fff);border-bottom:1px solid var(--line);border-radius:0 0 18px 18px;box-shadow:0 16px 30px #172b3a24;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-9px) scale(.99);transform-origin:top center;transition:opacity .26s cubic-bezier(.22,1,.36,1),transform .26s cubic-bezier(.22,1,.36,1),visibility 0s linear .26s}
+  .portal-menu.open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1);transition:opacity .26s cubic-bezier(.22,1,.36,1),transform .26s cubic-bezier(.22,1,.36,1)}
+  .portal-menu a{padding:10px 0;border-bottom:1px solid var(--line)}
+  .portal-menu a:last-child{border-bottom:0}
+  .portal-menu-backdrop{display:block;position:fixed;z-index:49;inset:64px 0 0;background:#101d29a6;backdrop-filter:blur(4px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .26s cubic-bezier(.22,1,.36,1),visibility 0s linear .26s}
+  .portal-menu-backdrop.open{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .26s cubic-bezier(.22,1,.36,1)}
+  body[data-page="join"] .join-shell{display:block}
+  body[data-page="join"] .join-heading{text-align:center;margin:0 auto 1.5rem}
+  body[data-page="join"] .join-heading .eyebrow{justify-content:center}
+  body[data-page="join"] .choice-tabs{display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem;margin:0 auto 1.5rem}
+  body[data-page="join"] .choice-tabs>.choice-tab:first-child{grid-column:1;width:auto!important;max-width:none!important;justify-self:stretch!important}
+  body[data-page="join"] .form-panel{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.portal-menu,.portal-menu-backdrop,.portal-menu-toggle svg{transition:none!important;animation:none!important}}
+@keyframes portalMenuIconReveal{from{opacity:.35;transform:rotate(-70deg) scale(.8)}to{opacity:1;transform:rotate(0) scale(1)}}
+.portal-menu-toggle{transition:background .26s cubic-bezier(.22,1,.36,1),transform .26s cubic-bezier(.22,1,.36,1)}
+.portal-menu-toggle svg{transition:transform .26s cubic-bezier(.22,1,.36,1)}
+.portal-menu-toggle.is-open svg{animation:portalMenuIconReveal .26s cubic-bezier(.22,1,.36,1) both}
 @media(max-width:480px){
   .hero-mini{padding-block:3rem!important}
   .page-section{padding-block:2.5rem}
